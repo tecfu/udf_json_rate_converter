@@ -3,6 +3,11 @@ mysql_udf_json_rate_converter
 
 MySQL user defined function that calculates hi and low value in a numeric JSON array
 
+Requires libjansson:
+
+```
+apt-get install libjansson-dev
+```
 
 # Compiling:
 
@@ -15,17 +20,17 @@ gcc -fPIC -Wall -o dist/Debug/GNU-Linux-x86/udf_json_rate_converter.so build/Deb
 
 ### Compilation Notes:
 
-- INCLUDE DIRECTORIES
+- Include Directories
 ```
 mysql.h jansson.h
 ```
 
-- LINKER OPTIONS
+- Linker Options
 ```
  -shared -ljansson
 ```
 
-- WHAT THE FLAGS MEAN
+- What the flags do:
 
 ```
 -fPIC
@@ -45,7 +50,7 @@ This enables all the warnings about constructions that some users consider quest
 
 # Installation:
 
-## [n] MOVE .so file to mysql plugins directory:
+## [1] MOVE .so file to mysql plugins directory:
 
 //TO GET PATH TO PLUGINS DIR
 ```
@@ -75,7 +80,7 @@ create function udf_is_json returns integer soname 'udf_json_rate_converter.so';
 service mysql restart
 ```
 
-## [n] EXAMPLE TRIGGER 
+# Example Trigger:
 
 ```
 DELIMITER //
