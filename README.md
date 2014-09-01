@@ -9,8 +9,8 @@ MySQL user defined function that calculates hi and low value in a numeric JSON a
 [1] COMPILE main.c to udf_json_rate_converter.so
 
 ```
-gcc -fPIC -Wall   -c -g -I/usr/local/lib -I/usr/include/mysql -I/usr/local/include -fPIC -Wall -MMD -MP -MF build/Debug/GNU-Linux-x86/main.o.d -o build/Debug/GNU-Linux-x86/main.o main.c
-gcc -fPIC -Wall    -o dist/Debug/GNU-Linux-x86/udf_json_rate_converter.so build/Debug/GNU-Linux-x86/main.o  -shared -ljansson
+gcc -fPIC -Wall -c -g -I/usr/local/lib -I/usr/include/mysql -I/usr/local/include -fPIC -Wall -MMD -MP -MF build/Debug/GNU-Linux-x86/main.o.d -o build/Debug/GNU-Linux-x86/main.o main.c
+gcc -fPIC -Wall -o dist/Debug/GNU-Linux-x86/udf_json_rate_converter.so build/Debug/GNU-Linux-x86/main.o  -shared -ljansson
 ```
 
 ### Compilation Notes:
