@@ -16,21 +16,28 @@ gcc -fPIC -Wall    -o dist/Debug/GNU-Linux-x86/udf_json_rate_converter.so build/
 ### Compilation Notes:
 
 - INCLUDE DIRECTORIES
-    mysql.h
-    jansson.h
+```
+mysql.h jansson.h
+```
 
 - LINKER OPTIONS
-    -shared -ljansson
+```
+ -shared -ljansson
+```
 
-// WHAT THE FLAGS MEAN
+- WHAT THE FLAGS MEAN
 
+```
 -fPIC
+```
 If supported for the target machine, emit position-independent code, suitable for dynamic linking and avoiding any limit on the size of the global offset table. This option makes a difference on the m68k, PowerPC and SPARC.
 Position-independent code requires special support, and therefore works only on certain machines.
 
 When this flag is set, the macros __pic__ and __PIC__ are defined to 2. 
 
+```
 -Wall
+```
 This enables all the warnings about constructions that some users consider questionable, and that are easy to avoid (or modify to prevent the warning), even in conjunction with macros. This also enables some language-specific warnings described in C++ Dialect Options and Objective-C and Objective-C++ Dialect Options.
 
 
@@ -40,12 +47,12 @@ This enables all the warnings about constructions that some users consider quest
 
 ## [n] MOVE .so file to mysql plugins directory:
 
-//TO GET PATH
+//TO GET PATH TO PLUGINS DIR
 ```
 mysql> SHOW VARIABLES LIKE 'plugin_dir';
 ```
 
-//TO MOVE
+//TO MOVE .so TO PLUGINS DIR
 ```
 mv udf_json_rate_converter.so /usr/lib/mysql/plugin/
 ```
@@ -68,11 +75,11 @@ create function udf_is_json returns integer soname 'udf_json_rate_converter.so';
 service mysql restart
 ```
 
-## [n] CREATE THE TRIGGER 
+## [n] EXAMPLE TRIGGER 
 
 ```
 DELIMITER //
-CREATE TRIGGER update_rates BEFORE UPDATE ON items      
+CREATE TRIGGER update_rates BEFORE UPDATE ON sometable      
 FOR EACH ROW      
 BEGIN      
 DECLARE j INT(2);
