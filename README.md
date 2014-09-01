@@ -1,5 +1,5 @@
-mysql_udf_json_array_math
-=========================
+mysql_udf_json_rate_converter
+=============================
 
 MySQL user defined function that calculates hi and low value in a numeric JSON array
 
