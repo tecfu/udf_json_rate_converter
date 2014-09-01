@@ -4,6 +4,8 @@ mysql_udf_json_rate_converter
 MySQL user defined function that calculates hi and low value in a numeric JSON array
 
 
+# Compiling:
+
 [1] COMPILE main.c to udf_json_rate_converter.so
 
 ```
@@ -11,7 +13,7 @@ gcc -fPIC -Wall   -c -g -I/usr/local/lib -I/usr/include/mysql -I/usr/local/inclu
 gcc -fPIC -Wall    -o dist/Debug/GNU-Linux-x86/udf_json_rate_converter.so build/Debug/GNU-Linux-x86/main.o  -shared -ljansson
 ```
 
-# Compiling:
+### Compilation Notes:
 
 - INCLUDE DIRECTORIES
     mysql.h
@@ -30,6 +32,9 @@ When this flag is set, the macros __pic__ and __PIC__ are defined to 2.
 
 -Wall
 This enables all the warnings about constructions that some users consider questionable, and that are easy to avoid (or modify to prevent the warning), even in conjunction with macros. This also enables some language-specific warnings described in C++ Dialect Options and Objective-C and Objective-C++ Dialect Options.
+
+
+
 
 # Installation:
 
