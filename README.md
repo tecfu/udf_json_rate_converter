@@ -6,10 +6,10 @@ MySQL user defined function that calculates hi and low value in a numeric JSON a
 
 [1] COMPILE main.c to udf_json_rate_converter.so
 
-\code
+```
 gcc -fPIC -Wall   -c -g -I/usr/local/lib -I/usr/include/mysql -I/usr/local/include -fPIC -Wall -MMD -MP -MF build/Debug/GNU-Linux-x86/main.o.d -o build/Debug/GNU-Linux-x86/main.o main.c
 gcc -fPIC -Wall    -o dist/Debug/GNU-Linux-x86/udf_json_rate_converter.so build/Debug/GNU-Linux-x86/main.o  -shared -ljansson
-\endcode
+```
 
 COMPILING NOTES:
 - INCLUDE DIRECTORIES
@@ -37,29 +37,36 @@ This enables all the warnings about constructions that some users consider quest
 [n] MOVE .so file to mysql plugins directory:
 
 //TO GET PATH
+```
 mysql> SHOW VARIABLES LIKE 'plugin_dir';
+```
 
 //TO MOVE
+```
 mv udf_json_rate_converter.so /usr/lib/mysql/plugin/
-
+```
 
 [n] CHECK FUNCTIONS AND DROP EXISTING CONFLICTS
+```
 SELECT * FROM mysql.func;
 DROP function ...
-
+```
 
 [n] CREATE THE FUNCTIONS
+```
 create function udf_json_low_rate returns real soname 'udf_json_rate_converter.so';
 create function udf_json_high_rate returns real soname 'udf_json_rate_converter.so';
 create function udf_is_json returns integer soname 'udf_json_rate_converter.so';
-
+```
 
 [n] RESTART MYSQL
+```
 service mysql restart
-
+```
 
 [n] CREATE THE TRIGGER 
 
+```
 DELIMITER //
 CREATE TRIGGER update_rates BEFORE UPDATE ON items      
 FOR EACH ROW      
@@ -71,3 +78,4 @@ ELSE SET NEW.rates = OLD.rates, NEW.high_rate = OLD.high_rate, NEW.low_rate = OL
 END IF;      
 END
 //
+```
